@@ -1,0 +1,101 @@
+[
+    {
+        "id": "a6e498084aa6e663",
+        "type": "tab",
+        "label": "Fluxo 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e67a0d23c27207c4",
+        "type": "watson-assistant-v2",
+        "z": "a6e498084aa6e663",
+        "name": "Diagnóstico",
+        "service-endpoint": "https://api.us-south.assistant.watson.cloud.ibm.com/instances/b7c9e5e8-e08d-4e27-91f9-4759c8af3636",
+        "assistant_id": "9ca8583e-e482-407d-8b76-cf245ba7853b",
+        "debug": false,
+        "restart": false,
+        "return_context": true,
+        "alternate_intents": false,
+        "multisession": true,
+        "timeout": "",
+        "optout-learning": false,
+        "persist-session-id": false,
+        "x": 330,
+        "y": 40,
+        "wires": [
+            [
+                "1e4d6a5bbe052024"
+            ]
+        ]
+    },
+    {
+        "id": "3bd5e0a7a75dbff1",
+        "type": "http in",
+        "z": "a6e498084aa6e663",
+        "name": "",
+        "url": "/userInput",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 180,
+        "wires": [
+            [
+                "16ecd21674656d04"
+            ]
+        ]
+    },
+    {
+        "id": "1d530b056c98d04c",
+        "type": "http response",
+        "z": "a6e498084aa6e663",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 670,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "16ecd21674656d04",
+        "type": "function",
+        "z": "a6e498084aa6e663",
+        "name": "function 3",
+        "func": "msg.payload = msg.payload.input;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 180,
+        "wires": [
+            [
+                "e67a0d23c27207c4"
+            ]
+        ]
+    },
+    {
+        "id": "1e4d6a5bbe052024",
+        "type": "function",
+        "z": "a6e498084aa6e663",
+        "name": "function 4",
+        "func": "msg.payload = {output: msg.payload.output.generic[0].text};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 40,
+        "wires": [
+            [
+                "1d530b056c98d04c"
+            ]
+        ]
+    }
+]

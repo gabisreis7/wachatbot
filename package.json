@@ -1,0 +1,16 @@
+{
+    "name": "node-red-app",
+    "version": "1.0.0",
+    "description": "Node-RED on Render",
+    "main": "node_modules/node-red/red.js",
+    "scripts": {
+      "start": "node node_modules/node-red/red.js -v -s settings.js"
+    },
+    "dependencies": {
+      "node-red": "^3.0.0"
+    },
+    "engines": {
+      "node": ">=14.x"
+    }
+  }
+  
